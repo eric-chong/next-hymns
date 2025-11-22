@@ -1,3 +1,12 @@
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/700.css";
+// import LabelIcon from "@mui/icons-material/Label";
+// import PersonIcon from "@mui/icons-material/Person";
+import Image from "next/image";
+import GraphicEqIcon from "@mui/icons-material/GraphicEq";
+import { AppBar, Box, Button, Toolbar } from "@mui/material";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -25,6 +34,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <AppBar position="fixed" component="nav">
+          <Toolbar variant="dense">
+            <GraphicEqIcon />
+            <Box flexGrow="1">
+              <Button color="inherit">Hymns</Button>
+            </Box>
+            <Box flexGrow="0">
+              <Button
+                color="inherit"
+                startIcon={
+                  <Image
+                    src="/google-icon.svg"
+                    alt="Google logo"
+                    width={20}
+                    height={20}
+                  />
+                }
+              >
+                Sign in with Google
+              </Button>
+            </Box>
+          </Toolbar>
+        </AppBar>
         {children}
       </body>
     </html>
