@@ -10,8 +10,9 @@ import { AppBar, Box, Button, Toolbar } from "@mui/material";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { syncClerkUser } from "@/actions/users";
 import AuthButtons from "@/components/AuthButtons";
-import { prisma } from "@/lib/prisma";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -34,12 +35,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // TODO: remove testing console.log
   const user = await currentUser();
-  console.log("current user >>>>", user);
 
-  const users = await prisma.user.findMany();
-  console.log("users >>>>", users);
+  if (user) {
+    await syncClerkUser(user);
+  }
 
   return (
     <ClerkProvider>
