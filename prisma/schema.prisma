@@ -9,12 +9,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Example data model
 model User {
   id        String   @id @default(cuid())
   name      String?
   clerkId   String   @unique
   email     String?  @unique
+  hymns     Hymn[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Hymn {
+  id           String             @id @default(cuid())
+  userId       String
+  user         User               @relation(fields: [userId], references: [id])
+  translations HymnTranslation[]
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+}
+
+model HymnTranslation {
+  id     String @id @default(cuid())
+  hymnId String
+  hymn   Hymn   @relation(fields: [hymnId], references: [id])
+
+  locale String
+  title  String
+
+  @@unique([hymnId, locale])
 }
