@@ -9,7 +9,6 @@ const syncClerkUser = async (user: User) => {
   const email = user.primaryEmailAddress?.emailAddress ?? null;
 
   const users = await prisma.user.findMany();
-  console.log("users >>>>", users);
 
   return prisma.user.upsert({
     where: { clerkId },
