@@ -9,6 +9,8 @@ import GraphicEqIcon from "@mui/icons-material/GraphicEq";
 import { AppBar, Box, Button, Toolbar } from "@mui/material";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { grey } from "@mui/material/colors";
+import { alpha } from "@mui/material/styles";
 
 import { syncClerkUser } from "@/actions/users";
 import AuthButtons from "@/components/AuthButtons";
@@ -45,7 +47,11 @@ export default async function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
-          <AppBar position="fixed" component="nav">
+          <AppBar
+            position="fixed"
+            component="nav"
+            sx={{ bgcolor: alpha(grey[200], 0.6), color: grey[900] }}
+          >
             <Toolbar variant="dense">
               <GraphicEqIcon />
               <Box flexGrow="1">
