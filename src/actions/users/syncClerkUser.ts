@@ -8,8 +8,6 @@ const syncClerkUser = async (user: User) => {
 
   const email = user.primaryEmailAddress?.emailAddress ?? null;
 
-  const users = await prisma.user.findMany();
-
   return prisma.user.upsert({
     where: { clerkId },
     update: { name, email },

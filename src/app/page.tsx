@@ -1,8 +1,8 @@
-import Image from "next/image";
+import { Typography } from "@mui/material";
+
+import { getAllHymns } from "@/actions/hymns";
 
 import styles from "./page.module.css";
-import { Typography } from "@mui/material";
-import { getAllHymns } from "@/actions/hymns";
 
 export default async function Home() {
   const hymns = await getAllHymns();
