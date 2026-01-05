@@ -7,7 +7,9 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "prettier:check": "prettier -c src/.",
+    "prettier:fix": "prettier -w src/."
   },
   "dependencies": {
     "@clerk/nextjs": "^6.36.0",
