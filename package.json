@@ -9,7 +9,8 @@
     "lint": "eslint",
     "postinstall": "prisma generate",
     "prettier:check": "prettier -c src/.",
-    "prettier:fix": "prettier -w src/."
+    "prettier:fix": "prettier -w src/.",
+    "prepare": "husky"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.36.0",
@@ -32,6 +33,8 @@
     "eslint-config-next": "15.5.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.6.2",
     "prisma": "5.10.2",
     "typescript": "^5"
